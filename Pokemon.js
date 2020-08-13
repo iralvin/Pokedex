@@ -5,15 +5,11 @@ export default class Pokemon {
     this._cardTemplate = template;
   }
 
-
-
   getPokemon() {
-    return fetch(`${baseUrl}pokemon?offset=0&limit=10`, {
+    return fetch(`${baseUrl}pokemon?offset=0&limit=151`, {
       method: "GET",
     }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+      return res.json();
     });
   }
 }

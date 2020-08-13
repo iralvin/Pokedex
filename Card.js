@@ -1,9 +1,9 @@
 export default class Card {
-  constructor(template, info, pokemonList, popupWindow) {
+  constructor(template, info, pokemonList, handlePokemonPopup) {
     this._template = template;
     this._info = info;
     this._pokemonList = pokemonList;
-    this._popupWindow = popupWindow;
+    this._handlePokemonPopup = handlePokemonPopup;
   }
 
   appendCard() {
@@ -18,35 +18,37 @@ export default class Card {
         return res.json();
       })
       .then((res) => {
-        // console.log(res)
-        // setPokemonCardInfo(res)
-        console.log(res.sprites);
-        this._pokemonImage.src = res.sprites["front_default"];
-        this._pokemonName.textContent = res.name;
-        this.appendCard();
+        this._fullDataSet = res;
+        this._pokemonImage.src = this._fullDataSet.sprites["front_default"];
+        this._pokemonName.textContent = "#" + this._fullDataSet.id + " " + this._fullDataSet.name;
+      })
+      .then(() => {
+
+        this.setEventListeners();
       });
   }
 
   setEventListeners() {
-    this._popupWindow.addEventListener("click", (e) => {
-      if (e.target === this._popupWindow)
-        this._popupWindow.classList.remove("popup_visible");
-    });
-
     this._newCard.addEventListener("click", () => {
-      this._popupWindow.classList.add("popup_visible");
+      this._handlePokemonPopup(
+        this._fullDataSet.name,
+        this._fullDataSet.sprites["front_default"],
+        this._fullDataSet.height,
+        this._fullDataSet.weight
+      );
     });
   }
 
+  
+
   generatePokemonCard() {
-    // console.log(this._info);
     this._newCard = this._template.content
       .querySelector(".pokemon__card")
       .cloneNode(true);
     this._pokemonImage = this._newCard.querySelector(".pokemon__image");
     this._pokemonName = this._newCard.querySelector(".pokemon__name");
+    this.appendCard();
 
     this.getPokemonData();
-    this.setEventListeners();
   }
 }

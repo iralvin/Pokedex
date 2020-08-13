@@ -1,13 +1,41 @@
 .page {
 	margin: 0;
 	padding:0;
+	font-family: Arial, Helvetica, sans-serif;
 }
+
+.pokemon__section{
+	margin: auto;
+	width: 80%;
+	
+}
+
+
+
+
+
+
+
+
+
+
+
+
+.pokemon__cards-list{
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+
+}
+
+
+
 
 .pokemon__card{
 	display: flex;
 	flex-direction: column;
 	align-items:center;
-
+	margin-bottom: 25px;
 	max-width: 150px;
 	max-height: 150px;
 }
@@ -25,12 +53,14 @@
 	max-height: 100%;
 }
 
-
-.pokemon__cards-list{
-	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-
+.pokemon__name{
+	font-weight: bold;
+	text-transform: capitalize;
 }
+
+
+
+
 
 
 
