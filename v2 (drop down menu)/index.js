@@ -1,6 +1,8 @@
 import Option from "./Option.js";
 import Pokemon from "./Pokemon.js";
 
+const loadingAnimation = document.querySelector(".loading-animation-container");
+
 const template = document.querySelector("#template");
 const popup = document.querySelector(".pokemon__popup");
 const popupName = popup.querySelector(".pokemon__popup_name");
@@ -19,8 +21,16 @@ const genButtons = Array.from(
 const setGenButtonEventListener = () => {
   genButtons.forEach((button, index) => {
     button.addEventListener("click", () => {
+      genButtons.forEach((button) => {
+        button.classList.remove("button_active");
+      });
+    });
+
+    button.addEventListener("click", () => {
+      button.classList.add("button_active");
       createPokemonList(generationOffsets[index]);
     });
+
   });
 };
 
@@ -60,6 +70,7 @@ const generationOffsets = [
 ];
 
 const handlePokemonClick = (pokemonName) => {
+  loadingAnimation.classList.add("visible");
   pokemon.getPokemonData(pokemonName).then((res) => {
     console.log(res);
 
@@ -73,15 +84,15 @@ const handlePokemonClick = (pokemonName) => {
     popupMoves1.textContent = res[0].moves[randMove1].move.name;
     popupMoves2.textContent = res[0].moves[randMove2].move.name;
 
-
     const flavorTexts = res[1].flavor_text_entries.filter((flavorText) => {
       if (flavorText.language.name === "en") {
         return flavorText;
       }
     });
-    console.log(flavorTexts)
+    console.log(flavorTexts);
     const rand = Math.floor(Math.random() * flavorTexts.length);
     popupFlavorText.textContent = flavorTexts[rand].flavor_text;
+    loadingAnimation.classList.remove("visible");
   });
 };
 
