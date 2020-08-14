@@ -33,12 +33,16 @@ export default class Option {
     this._newOption.addEventListener("click", () => {
       console.log("clicked on " + this._info.name)
 
-      // this._handlePokemonClick(
-      //   this._fullDataSet.name,
-      //   this._fullDataSet.sprites["front_default"],
-      //   this._fullDataSet.height,
-      //   this._fullDataSet.weight
-      // );
+
+
+
+
+      this._handlePokemonClick(
+        this._info.name
+        // this._fullDataSet.sprites["front_default"],
+        // this._fullDataSet.height,
+        // this._fullDataSet.weight
+      );
     });
 
   }
