@@ -24,22 +24,47 @@ const popupWeight = popup.querySelector(".pokemon__popup_weight");
 //     popup.classList.remove("popup_visible");
 //   }
 // });
-
+const handlePokemonClick = () => {}
 const pokemon = new Pokemon(template);
 
-const dropDown = document.querySelector(".pokemon__dropdown_list");
+const pokemonDropdownList = document.querySelector(".pokemon__dropdown_list");
 
 pokemon.getPokemon().then((res) => {
   res.results.forEach((pokemon, index) => {
-    const newOption = template.content.querySelector(".pokemon__option").cloneNode(true);
-    const name = newOption.querySelector(".pokemon__name");
-    name.innerHTML =  `#${index+1}&nbsp;&nbsp;${pokemon.name}`
     
 
-    newOption.addEventListener("click", () => {
-      console.log("clicked on " + name.textContent)
-    })
-    dropDown.append(newOption);
+
+
+
+
+
+
+
+  const newOption = new Option(
+    template,
+    pokemon,
+    index,
+    pokemonDropdownList,
+    handlePokemonClick
+  );
+
+    newOption.generatePokemonOption();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // const newCard = new Card(
     //   cardTemplate,
@@ -54,10 +79,10 @@ pokemon.getPokemon().then((res) => {
 
 const button = document.querySelector(".pokemon__dropdown_button");
 button.addEventListener("click", () => {
-  dropDown.classList.toggle("visible")
+  pokemonDropdownList.classList.toggle("visible")
 })
 
 document.addEventListener("click", (e) => {
   if (e.target !== button)
-  dropDown.classList.remove("visible");
+  pokemonDropdownList.classList.remove("visible");
 })
