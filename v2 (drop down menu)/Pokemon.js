@@ -4,8 +4,8 @@ export default class Pokemon {
   constructor() {
   }
 
-  getPokemon() {
-    return fetch(`${baseUrl}pokemon?offset=0&limit=151`, {
+  getPokemon(options) {
+    return fetch(`${baseUrl}pokemon?offset=${options.offset}&limit=${options.limit}`, {
       method: "GET",
     }).then((res) => {
       return res.json();

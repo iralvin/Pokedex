@@ -25,6 +25,17 @@
   left: 50%;
   transform: translateX(-50%);
 }
+
+.pokemon__generation-selector{
+	margin: auto;
+	display: flex;
+	justify-content: space-evenly;
+}
+.pokemon__generation_button{
+	padding: 10px;
+}
+
+
 .pokemon__dropdown {
   display: flex;
   flex-direction: column;
@@ -34,7 +45,7 @@
 
 .pokemon__dropdown_button {
   margin: 0;
-  padding: 0;
+  padding: 10px;
 }
 
 .pokemon__dropdown_list {
@@ -138,8 +149,9 @@
 }
 
 .pokemon__popup_container_flavor-text {
-  width: 80%;
-  margin-top: 25px;
+  max-width: 80%;
+  height: 60px;
+  margin-top: 15px;
   text-align: center;
   font-size: 0.8em;
 }
