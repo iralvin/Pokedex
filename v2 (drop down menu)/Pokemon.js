@@ -27,6 +27,7 @@ export default class Pokemon {
     })
 
 
+
     // return fetch(`${baseUrl}pokemon/${pokemonName}`, {
     //   method:"GET"
     // })
@@ -36,5 +37,15 @@ export default class Pokemon {
     //   }
     // })
       
+  }
+
+
+  getEvolvedFrom(pokemonName){
+    return fetch(`${baseUrl}pokemon/${pokemonName}`, {
+      method:"GET"
+    })
+    .then (res => {
+      return res.json()
+    })
   }
 }
