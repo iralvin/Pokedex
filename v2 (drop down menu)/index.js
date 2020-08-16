@@ -228,3 +228,19 @@ document.addEventListener("click", (e) => {
 
 createPokemonList(generationOffsets[0]);
 setGenButtonEventListener();
+
+
+(function hola () {
+  fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=999", {
+    method:"GET"
+  })
+  .then(res => { 
+    return res.json();
+  })
+  .then (res => {
+    localStorage.setItem("pokemon-data", JSON.stringify(res))
+  })
+})()
+
+const cacheData = localStorage.getItem("pokemon-data");
+console.log(cacheData);
