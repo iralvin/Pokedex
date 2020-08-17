@@ -34,7 +34,8 @@ const setGenButtonEventListener = () => {
 
     button.addEventListener("click", () => {
       button.classList.add("button_active");
-      createPokemonList(generationOffsets[index]);
+      createPokemonList(generationOffsets[index])
+      createPokemonGrid(generationOffsets[index]);
     });
   });
 };
