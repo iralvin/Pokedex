@@ -284,11 +284,16 @@ const listButton = document.querySelector(".pokemon__change-view_button_list");
 
 gridButton.addEventListener("click", () => {
   // pokemonDropdownList.innerHTML = "";
-  dropdownButton.style.display = "none";
-  createPokemonGrid(generationOffsets[0]);
+  dropdownButton.classList.add("is_not_visible");
+  pokemonCardsList.classList.remove("is_not_visible");
+
 });
 
 listButton.addEventListener("click", () => {
-  pokemonCardsList.innerHTML = "";
-  dropdownButton.style.display = "block";
+  // pokemonCardsList.innerHTML = "";
+  pokemonCardsList.classList.add("is_not_visible");
+  dropdownButton.classList.remove("is_not_visible");
 })
+
+
+createPokemonGrid(generationOffsets[0]);
