@@ -123,21 +123,25 @@
 }
 
 .pokemon__popup_evolution{
+  max-width: 96px;
   position: absolute;
   left:0px;
   top:17px;
 
 }
 .pokemon__popup_image {
-  width: 57%;
+  /* width: 57%; */
+  width: 350px;
+  height: 250px;
 }
 
 .pokemon__popup_name {
   box-sizing: border-box;
+  margin: 20px 0;
   width: 100%;
   align-self: flex-start;
   padding-left: 25%;
-  line-height: 3;
+  /* line-height: 3; */
   font-weight: bold;
   font-size: 24px;
   text-transform: capitalize;

@@ -82,121 +82,129 @@ const handlePokemonClick = (pokemonName) => {
     //  Get general ht/wt info
     popup.classList.add("popup_visible");
     popupName.textContent = res[0].name;
-    popupImage.src = res[0].sprites.front_default;
+    popupImage.src = res[0].sprites.front_default
+      ? res[0].sprites.front_default
+      : "";
     popupHeight.textContent = "Height: " + res[0].height / 10 + " m";
     popupWeight.textContent = "Weight: " + res[0].weight / 10 + " kg";
 
-    switch (res[0].types[0].type.name) {
-      case "bug":
-        popup.style.backgroundImage =
-          "url('../blank-templates/grass-blank.png')";
-        break;
-      case "dark":
-        popup.style.backgroundImage =
-          "url('../blank-templates/dark-blank.png')";
-        break;
-      case "dragon":
-        popup.style.backgroundImage =
-          "url('../blank-templates/dragon-blank.png')";
-        break;
-      case "electric":
-        popup.style.backgroundImage =
-          "url('../blank-templates/electric-blank.png')";
-        break;
-      case "fairy":
-        popup.style.backgroundImage =
-          "url('../blank-templates/fairy-blank.png')";
-        break;
-      case "fighting":
-        popup.style.backgroundImage =
-          "url('../blank-templates/fighting-blank.png')";
-        break;
-      case "fire":
-        popup.style.backgroundImage =
-          "url('../blank-templates/fire-blank.png')";
-        break;
-      case "flying":
-        popup.style.backgroundImage =
-          "url('../blank-templates/normal-blank.png')";
-        break;
-      case "ghost":
-        popup.style.backgroundImage =
-          "url('../blank-templates/psychic-blank.png')";
-        break;
-      case "grass":
-        popup.style.backgroundImage =
-          "url('../blank-templates/grass-blank.png')";
-        break;
-      case "ground":
-        popup.style.backgroundImage =
-          "url('../blank-templates/fighting-blank.png')";
-        break;
-      case "ice":
-        popup.style.backgroundImage =
-          "url('../blank-templates/water-blank.png')";
-        break;
-      case "metal":
-        popup.style.backgroundImage =
-          "url('../blank-templates/metal-blank.png')";
-        break;
-      case "normal":
-        popup.style.backgroundImage =
-          "url('../blank-templates/normal-blank.png')";
-        break;
-      case "poison":
-        popup.style.backgroundImage =
-          "url('../blank-templates/psychic-blank.png')";
-        break;
-      case "psychic":
-        popup.style.backgroundImage =
-          "url('../blank-templates/psychic-blank.png')";
-        break;
-      case "rock":
-        popup.style.backgroundImage =
-          "url('../blank-templates/fighting-blank.png')";
-        break;
-      case "water":
-        popup.style.backgroundImage =
-          "url('../blank-templates/water-blank.png')";
-        break;
+    if (res[0].types.length > 0) {
+      switch (res[0].types[0].type.name) {
+        case "bug":
+          popup.style.backgroundImage =
+            "url('../blank-templates/grass-blank.png')";
+          break;
+        case "dark":
+          popup.style.backgroundImage =
+            "url('../blank-templates/dark-blank.png')";
+          break;
+        case "dragon":
+          popup.style.backgroundImage =
+            "url('../blank-templates/dragon-blank.png')";
+          break;
+        case "electric":
+          popup.style.backgroundImage =
+            "url('../blank-templates/electric-blank.png')";
+          break;
+        case "fairy":
+          popup.style.backgroundImage =
+            "url('../blank-templates/fairy-blank.png')";
+          break;
+        case "fighting":
+          popup.style.backgroundImage =
+            "url('../blank-templates/fighting-blank.png')";
+          break;
+        case "fire":
+          popup.style.backgroundImage =
+            "url('../blank-templates/fire-blank.png')";
+          break;
+        case "flying":
+          popup.style.backgroundImage =
+            "url('../blank-templates/normal-blank.png')";
+          break;
+        case "ghost":
+          popup.style.backgroundImage =
+            "url('../blank-templates/psychic-blank.png')";
+          break;
+        case "grass":
+          popup.style.backgroundImage =
+            "url('../blank-templates/grass-blank.png')";
+          break;
+        case "ground":
+          popup.style.backgroundImage =
+            "url('../blank-templates/fighting-blank.png')";
+          break;
+        case "ice":
+          popup.style.backgroundImage =
+            "url('../blank-templates/water-blank.png')";
+          break;
+        case "metal":
+          popup.style.backgroundImage =
+            "url('../blank-templates/metal-blank.png')";
+          break;
+        case "normal":
+          popup.style.backgroundImage =
+            "url('../blank-templates/normal-blank.png')";
+          break;
+        case "poison":
+          popup.style.backgroundImage =
+            "url('../blank-templates/psychic-blank.png')";
+          break;
+        case "psychic":
+          popup.style.backgroundImage =
+            "url('../blank-templates/psychic-blank.png')";
+          break;
+        case "rock":
+          popup.style.backgroundImage =
+            "url('../blank-templates/fighting-blank.png')";
+          break;
+        case "water":
+          popup.style.backgroundImage =
+            "url('../blank-templates/water-blank.png')";
+          break;
+        default:
+          break;
+      }
     }
 
     //  Get random moves to add to card
-    const randMove1 = Math.floor(Math.random() * res[0].moves.length);
-    const randMove2 = Math.floor(Math.random() * res[0].moves.length);
-    popupMoves1.textContent = res[0].moves[randMove1].move.name;
-    popupMoves2.textContent = res[0].moves[randMove2].move.name;
+    if (res[0].moves.length > 0) {
+      const randMove1 = Math.floor(Math.random() * res[0].moves.length);
+      const randMove2 = Math.floor(Math.random() * res[0].moves.length);
+      popupMoves1.textContent = res[0].moves[randMove1].move.name;
+      popupMoves2.textContent = res[0].moves[randMove2].move.name;
+    }
 
     //  Get random flavor text to add to card
-    const flavorTexts = res[1].flavor_text_entries.filter((flavorText) => {
-      if (flavorText.language.name === "en") {
-        return flavorText;
-      }
-    });
-    console.log(flavorTexts);
-    const rand = Math.floor(Math.random() * flavorTexts.length);
-    popupFlavorText.textContent = flavorTexts[rand].flavor_text;
-
+    if (res[1].flavor_text_entries.length > 0) {
+      const flavorTexts = res[1].flavor_text_entries.filter((flavorText) => {
+        if (flavorText.language.name === "en") {
+          return flavorText;
+        }
+      });
+      console.log(flavorTexts);
+      const rand = Math.floor(Math.random() * flavorTexts.length);
+      popupFlavorText.textContent = flavorTexts[rand].flavor_text;
+    }
 
     // Get evolved from res[1] dataset
-    if (res[1].evolves_from_species !== null){
-      console.log("has an evolves from form " + res[1].evolves_from_species.name);
-      pokemon.getEvolvedFrom(res[1].evolves_from_species.name)
-      .then (res => {
-        console.log("asdfasfasdf")
-        console.log(res)
+    if (res[1].evolves_from_species !== null) {
+      console.log(
+        "has an evolves from form " + res[1].evolves_from_species.name
+      );
+      pokemon.getEvolvedFrom(res[1].evolves_from_species.name).then((res) => {
+        console.log("asdfasfasdf");
+        console.log(res);
         popupEvolutionImage.src = res.sprites.front_default;
-      })
-    }
-    else{
+      });
+    } else {
       console.log("has no prior evolve form");
-      popupEvolutionImage.src = ""
+      popupEvolutionImage.src = "";
     }
 
     loadingAnimation.classList.remove("visible");
   });
 };
-
 
 const pokemonDropdownList = document.querySelector(".pokemon__dropdown_list");
 
@@ -229,18 +237,17 @@ document.addEventListener("click", (e) => {
 createPokemonList(generationOffsets[0]);
 setGenButtonEventListener();
 
-
-(function hola () {
+(function hola() {
   fetch("https://pokeapi.co/api/v2/pokemon?offset=0&limit=999", {
-    method:"GET"
+    method: "GET",
   })
-  .then(res => { 
-    return res.json();
-  })
-  .then (res => {
-    localStorage.setItem("pokemon-data", JSON.stringify(res))
-  })
-})()
+    .then((res) => {
+      return res.json();
+    })
+    .then((res) => {
+      localStorage.setItem("pokemon-data", JSON.stringify(res));
+    });
+})();
 
 const cacheData = localStorage.getItem("pokemon-data");
 console.log(cacheData);
