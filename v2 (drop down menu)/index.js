@@ -1,9 +1,12 @@
 import Option from "./Option.js";
 import Pokemon from "./Pokemon.js";
+import Card from "./Card.js";
 
 const loadingAnimation = document.querySelector(".loading-animation-container");
 
-const template = document.querySelector("#template");
+const optionTemplate = document.querySelector("#template_option");
+const cardTemplate = document.querySelector("#template_card");
+
 const popup = document.querySelector(".pokemon__popup");
 const popupEvolutionImage = popup.querySelector(".pokemon__popup_evolution");
 const popupName = popup.querySelector(".pokemon__popup_name");
@@ -213,7 +216,7 @@ const createPokemonList = (generation) => {
   pokemon.getPokemon(generation).then((res) => {
     res.results.forEach((pokemon, index) => {
       const newOption = new Option(
-        template,
+        optionTemplate,
         pokemon,
         index,
         pokemonDropdownList,
@@ -225,13 +228,13 @@ const createPokemonList = (generation) => {
   });
 };
 
-const button = document.querySelector(".pokemon__dropdown_button");
-button.addEventListener("click", () => {
+const dropdownButton = document.querySelector(".pokemon__dropdown_button");
+dropdownButton.addEventListener("click", () => {
   pokemonDropdownList.classList.toggle("visible");
 });
 
 document.addEventListener("click", (e) => {
-  if (e.target !== button) pokemonDropdownList.classList.remove("visible");
+  if (e.target !== dropdownButton) pokemonDropdownList.classList.remove("visible");
 });
 
 createPokemonList(generationOffsets[0]);
@@ -251,3 +254,41 @@ setGenButtonEventListener();
 
 const cacheData = localStorage.getItem("pokemon-data");
 console.log(cacheData);
+
+
+
+
+
+
+
+const pokemonCardsList = document.querySelector(".pokemon__cards-list");
+const createPokemonGrid = (generation) => {
+  pokemonCardsList.innerHTML = "";
+  pokemon.getPokemon(generation).then((res) => {
+    res.results.forEach((pokemon, index) => {
+      const newCard = new Card(
+        cardTemplate,
+        pokemon,
+        index,
+        pokemonCardsList,
+        handlePokemonClick
+      );
+      newCard.generatePokemonCard();
+    });
+  });
+}
+
+
+const gridButton = document.querySelector(".pokemon__change-view_button_grid");
+const listButton = document.querySelector(".pokemon__change-view_button_list");
+
+gridButton.addEventListener("click", () => {
+  // pokemonDropdownList.innerHTML = "";
+  dropdownButton.style.display = "none";
+  createPokemonGrid(generationOffsets[0]);
+});
+
+listButton.addEventListener("click", () => {
+  pokemonCardsList.innerHTML = "";
+  dropdownButton.style.display = "block";
+})

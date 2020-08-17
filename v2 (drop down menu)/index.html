@@ -12,6 +12,19 @@
 
   <body class="page">
     <div class="pokemon__section">
+      <div class="pokemon__change-view">
+        <button
+          class="pokemon__change-view_button pokemon__change-view_button_grid"
+        >
+          Grid View
+        </button>
+        <button
+          class="pokemon__change-view_button pokemon__change-view_button_list"
+        >
+          List View
+        </button>
+      </div>
+
       <div class="pokemon__generation-selector">
         <button
           class="pokemon__generation_button pokemon__generation_button_gen1 button_active"
@@ -55,10 +68,7 @@
           Generation 8
         </button>
       </div>
-      <p
-      class="pokemon__note"
-
-      >
+      <p class="pokemon__note">
         Note: Generation 8 currently not available. The information hasn't been
         updated to API.
       </p>
@@ -67,12 +77,16 @@
         <button class="pokemon__dropdown_button">Select a pokemon ▼</button>
         <ul class="pokemon__dropdown_list"></ul>
       </div>
+
+      <div class="pokemon__cards">
+        <ul class="pokemon__cards-list"></ul>
+      </div>
     </div>
 
     <div class="pokemon__popup">
       <div class="pokemon__popup_container">
         <h class="pokemon__popup_name"></h>
-        <img src="../asdf.png" alt="" class="pokemon__popup_evolution">
+        <img src="../asdf.png" alt="" class="pokemon__popup_evolution" />
         <img class="pokemon__popup_image" src="" />
         <div class="pokemon__popup_descriptors">
           <p class="pokemon__popup_height pokemon__popup_descriptor">height</p>
@@ -88,10 +102,16 @@
       </div>
     </div>
 
-    <template id="template">
+    <template id="template_option">
       <div class="pokemon__option">
-        <p class="pokemon__name"></p>
-        <!-- <img class="pokemon__image" src="" /> -->
+        <p class="pokemon__option_name"></p>
+      </div>
+    </template>
+
+    <template id="template_card">
+      <div class="pokemon__card">
+        <img class="pokemon__card_image" src="" />
+        <h class="pokemon__card_name"></h>
       </div>
     </template>
 

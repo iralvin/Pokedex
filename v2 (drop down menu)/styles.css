@@ -19,7 +19,7 @@
 }
 
 .pokemon__section {
-  margin: auto;
+  margin: auto ;
   width: 80%;
   /* position: absolute;
   z-index: 1; */
@@ -31,8 +31,13 @@
   /* transform: translateX(-50%); */
 }
 
+.pokemon__change-view{
+  margin: 50px auto 0;
+}
+
 .pokemon__generation-selector {
-  margin: auto;
+  box-sizing: border-box;
+  margin: 10px auto 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
@@ -47,8 +52,9 @@
 
 .pokemon__note{
   margin: 50px auto 0;
+  width: 100%;
   text-align: center;
-  font-size: 5vw;
+  font-size: 2rem;
   font-weight: bold;
   color: crimson;
 }
@@ -92,12 +98,94 @@
   cursor: pointer;
 }
 
-.pokemon__name {
+.pokemon__option_name {
   padding-left: 5px;
   line-height: 1.5;
   font-weight: bold;
   text-transform: capitalize;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.pokemon__cards-list{
+	margin: 0;
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+
+.pokemon__card{
+	display: flex;
+	flex-direction: column;
+	align-items:center;
+	margin-bottom: 25px;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.pokemon__card:hover{
+	cursor: pointer;
+}
+
+
+.pokemon__card_image{
+	max-width: 100%;
+	max-height: 100%;
+}
+
+.pokemon__card_name{
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 .pokemon__popup {
   margin: 50px auto 0;

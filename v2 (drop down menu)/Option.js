@@ -23,7 +23,7 @@ export default class Option {
     this._newOption = this._template.content
       .querySelector(".pokemon__option")
       .cloneNode(true);
-    this._pokemonName = this._newOption.querySelector(".pokemon__name");
+    this._pokemonName = this._newOption.querySelector(".pokemon__option_name");
     this._pokemonName.innerHTML = `#${this._index + 1}&nbsp;&nbsp;${
       this._info.name
     }`;
