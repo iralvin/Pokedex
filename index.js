@@ -7,16 +7,21 @@ const loadingAnimation = document.querySelector(".loading-animation-container");
 const optionTemplate = document.querySelector("#template_option");
 const cardTemplate = document.querySelector("#template_card");
 
-const popup = document.querySelector(".pokemon__popup");
-const popupEvolutionImage = popup.querySelector(".pokemon__popup_evolution");
-const popupName = popup.querySelector(".pokemon__popup_name");
-const popupImage = popup.querySelector(".pokemon__popup_image");
-const popupHeight = popup.querySelector(".pokemon__popup_height");
-const popupWeight = popup.querySelector(".pokemon__popup_weight");
-const popupMoves1 = popup.querySelector(".pokemon__popup_move_1");
-const popupMoves2 = popup.querySelector(".pokemon__popup_move_2");
+const popupContainer = document.querySelector(".pokemon__background-card");
 
-const popupFlavorText = popup.querySelector(".pokemon__popup_flavor-text");
+
+
+
+const popupCard = popupContainer.querySelector(".pokemon__popup");
+const popupEvolutionImage = popupContainer.querySelector(".pokemon__popup_evolution");
+const popupName = popupContainer.querySelector(".pokemon__popup_name");
+const popupImage = popupContainer.querySelector(".pokemon__popup_image");
+const popupHeight = popupContainer.querySelector(".pokemon__popup_height");
+const popupWeight = popupContainer.querySelector(".pokemon__popup_weight");
+const popupMoves1 = popupContainer.querySelector(".pokemon__popup_move_1");
+const popupMoves2 = popupContainer.querySelector(".pokemon__popup_move_2");
+
+const popupFlavorText = popupContainer.querySelector(".pokemon__popup_flavor-text");
 
 const pokemon = new Pokemon();
 
@@ -75,6 +80,14 @@ const generationOffsets = [
   },
 ];
 
+
+popupContainer.addEventListener("click", (e) => {
+  if (e.target === popupContainer){
+    popupContainer.classList.remove("popup_visible");
+
+  }
+})
+
 const handlePokemonClick = (pokemonName) => {
   loadingAnimation.classList.add("visible");
   pokemon.getPokemonData(pokemonName).then((res) => {
@@ -84,7 +97,7 @@ const handlePokemonClick = (pokemonName) => {
     console.log(res);
 
     //  Get general ht/wt info
-    popup.classList.add("popup_visible");
+    popupContainer.classList.add("popup_visible");
     popupName.textContent = res[0].name;
     popupImage.src = res[0].sprites.front_default
       ? res[0].sprites.front_default
@@ -95,75 +108,75 @@ const handlePokemonClick = (pokemonName) => {
     if (res[0].types.length > 0) {
       switch (res[0].types[0].type.name) {
         case "bug":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/grass-blank.png')";
           break;
         case "dark":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/dark-blank.png')";
           break;
         case "dragon":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/dragon-blank.png')";
           break;
         case "electric":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/electric-blank.png')";
           break;
         case "fairy":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/fairy-blank.png')";
           break;
         case "fighting":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/fighting-blank.png')";
           break;
         case "fire":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/fire-blank.png')";
           break;
         case "flying":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/normal-blank.png')";
           break;
         case "ghost":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/psychic-blank.png')";
           break;
         case "grass":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/grass-blank.png')";
           break;
         case "ground":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/fighting-blank.png')";
           break;
         case "ice":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/water-blank.png')";
           break;
         case "metal":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/metal-blank.png')";
           break;
         case "normal":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/normal-blank.png')";
           break;
         case "poison":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/psychic-blank.png')";
           break;
         case "psychic":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/psychic-blank.png')";
           break;
         case "rock":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/fighting-blank.png')";
           break;
         case "water":
-          popup.style.backgroundImage =
+          popupCard.style.backgroundImage =
             "url('./blank-templates/water-blank.png')";
           break;
         default:
@@ -221,7 +234,8 @@ const createPokemonList = (generation) => {
         pokemon,
         index,
         pokemonDropdownList,
-        handlePokemonClick
+        handlePokemonClick,
+        dropdownButton
       );
 
       newOption.generatePokemonOption();
@@ -262,16 +276,16 @@ console.log(cacheData);
 
 
 
-const pokemonCardsList = document.querySelector(".pokemon__cards-list");
+const pokemonGridList = document.querySelector(".pokemon__cards-list");
 const createPokemonGrid = (generation) => {
-  pokemonCardsList.innerHTML = "";
+  pokemonGridList.innerHTML = "";
   pokemon.getPokemon(generation).then((res) => {
     res.results.forEach((pokemon, index) => {
       const newCard = new Card(
         cardTemplate,
         pokemon,
         index,
-        pokemonCardsList,
+        pokemonGridList,
         handlePokemonClick
       );
       newCard.generatePokemonCard();
@@ -286,13 +300,13 @@ const listButton = document.querySelector(".pokemon__change-view_button_list");
 gridButton.addEventListener("click", () => {
   // pokemonDropdownList.innerHTML = "";
   dropdownButton.classList.add("is_not_visible");
-  pokemonCardsList.classList.remove("is_not_visible");
+  pokemonGridList.classList.remove("is_not_visible");
 
 });
 
 listButton.addEventListener("click", () => {
   // pokemonCardsList.innerHTML = "";
-  pokemonCardsList.classList.add("is_not_visible");
+  pokemonGridList.classList.add("is_not_visible");
   dropdownButton.classList.remove("is_not_visible");
 })
 

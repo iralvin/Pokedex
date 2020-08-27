@@ -1,13 +1,13 @@
 export default class Card {
-  constructor(template, info, index, pokemonList, handlePokemonPopup) {
+  constructor(template, info, index, pokemonGrid, handlePokemonPopup) {
     this._template = template;
     this._info = info;
-    this._pokemonList = pokemonList;
+    this._pokemonGrid = pokemonGrid;
     this._handlePokemonPopup = handlePokemonPopup;
   }
 
   appendCard() {
-    this._pokemonList.append(this._newCard);
+    this._pokemonGrid.append(this._newCard);
   }
 
   getPokemonData() {
@@ -20,10 +20,10 @@ export default class Card {
       .then((res) => {
         this._fullDataSet = res;
         this._pokemonImage.src = this._fullDataSet.sprites["front_default"];
-        this._pokemonName.textContent = "#" + this._fullDataSet.id + " " + this._fullDataSet.name;
+        this._pokemonName.textContent =
+          "#" + this._fullDataSet.id + " " + this._fullDataSet.name;
       })
       .then(() => {
-
         this.setEventListeners();
       });
   }
@@ -31,16 +31,9 @@ export default class Card {
   setEventListeners() {
     this._newCard.addEventListener("click", () => {
       console.log("clicked on pokemon grid card");
-      // this._handlePokemonPopup(
-      //   this._fullDataSet.name,
-      //   this._fullDataSet.sprites["front_default"],
-      //   this._fullDataSet.height,
-      //   this._fullDataSet.weight
-      // );
+      this._handlePokemonPopup(this._info.name);
     });
   }
-
-  
 
   generatePokemonCard() {
     this._newCard = this._template.content
