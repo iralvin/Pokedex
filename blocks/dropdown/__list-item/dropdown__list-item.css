@@ -1,0 +1,13 @@
+@import url("./_name/dropdown__list-item_name.css");
+
+.dropdown___list-item {
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+.dropdown___list-item:hover {
+  background-color: blue;
+  color: white;
+  cursor: pointer;
+}
+
+

@@ -109,75 +109,75 @@ const handlePokemonClick = (pokemonName) => {
       switch (res[0].types[0].type.name) {
         case "bug":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/grass-blank.png')";
+            "url('../images/blank-templates/grass-blank.png')";
           break;
         case "dark":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/dark-blank.png')";
+            "url('../images/blank-templates/dark-blank.png')";
           break;
         case "dragon":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/dragon-blank.png')";
+            "url('../images/blank-templates/dragon-blank.png')";
           break;
         case "electric":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/electric-blank.png')";
+            "url('../images/blank-templates/electric-blank.png')";
           break;
         case "fairy":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/fairy-blank.png')";
+            "url('../images/blank-templates/fairy-blank.png')";
           break;
         case "fighting":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/fighting-blank.png')";
+            "url('../images/blank-templates/fighting-blank.png')";
           break;
         case "fire":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/fire-blank.png')";
+            "url('../images/blank-templates/fire-blank.png')";
           break;
         case "flying":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/normal-blank.png')";
+            "url('../images/blank-templates/normal-blank.png')";
           break;
         case "ghost":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/psychic-blank.png')";
+            "url('../images/blank-templates/psychic-blank.png')";
           break;
         case "grass":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/grass-blank.png')";
+            "url('../images/blank-templates/grass-blank.png')";
           break;
         case "ground":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/fighting-blank.png')";
+            "url('../images/blank-templates/fighting-blank.png')";
           break;
         case "ice":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/water-blank.png')";
+            "url('../images/blank-templates/water-blank.png')";
           break;
         case "metal":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/metal-blank.png')";
+            "url('../images/blank-templates/metal-blank.png')";
           break;
         case "normal":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/normal-blank.png')";
+            "url('../images/blank-templates/normal-blank.png')";
           break;
         case "poison":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/psychic-blank.png')";
+            "url('../images/blank-templates/psychic-blank.png')";
           break;
         case "psychic":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/psychic-blank.png')";
+            "url('../images/blank-templates/psychic-blank.png')";
           break;
         case "rock":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/fighting-blank.png')";
+            "url('../images/blank-templates/fighting-blank.png')";
           break;
         case "water":
           popupCard.style.backgroundImage =
-            "url('./blank-templates/water-blank.png')";
+            "url('../images/blank-templates/water-blank.png')";
           break;
         default:
           break;

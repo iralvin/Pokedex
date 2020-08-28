@@ -1,0 +1,15 @@
+@import url("./_image/cards-grid__cards_image.css");
+@import url("./_name/cards-grid__cards_name.css");
+
+.card-grid__card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto 25px;
+  max-width: 150px;
+  max-height: 150px;
+}
+
+.card-grid__card:hover {
+  cursor: pointer;
+}

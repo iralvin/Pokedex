@@ -1,0 +1,20 @@
+@import url("./__container/card-popup__container.css");
+@import url("./__name/card-popup__name.css");
+@import url("./__evolution/card-popup__evolution.css");
+@import url("./__image/card-popup__image.css");
+@import url("./__moves/card-popup__moves.css");
+@import url("./__descriptors/card-popup__descriptors.css");
+@import url("./__descriptor/card-popup__descriptor.css");
+@import url("./__flavor-text/card-popup__flavor-text.css");
+
+.card-popup {
+  display: none;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  position: fixed;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

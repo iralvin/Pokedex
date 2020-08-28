@@ -1,0 +1,5 @@
+@import url("./_container/card-popup__flavor-text_container.css");
+.card-popup__flavor-text {
+    padding: 0;
+    margin: 0;
+  }

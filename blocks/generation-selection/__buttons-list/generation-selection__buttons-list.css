@@ -1,0 +1,8 @@
+.generation-selection__buttons-list {
+  list-style: none;
+  box-sizing: border-box;
+  margin: 10px auto 0;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+}

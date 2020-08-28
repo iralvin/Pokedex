@@ -1,0 +1,10 @@
+.card-popup__name {
+  box-sizing: border-box;
+  margin: 20px 0;
+  width: 100%;
+  align-self: flex-start;
+  padding-left: 25%;
+  font-weight: bold;
+  font-size: 24px;
+  text-transform: capitalize;
+}

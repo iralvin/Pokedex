@@ -1,0 +1,9 @@
+@import url("./_text/card-popup__moves_text.css");
+
+.card-popup__moves {
+  width: 80%;
+  margin: 28px 0 58px 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-transform: capitalize;
+}

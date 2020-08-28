@@ -1,0 +1,8 @@
+.card-popup__flavor-text_container {
+  max-width: 30%;
+  height: 50px;
+  margin-right: 15.5%;
+  text-align: left;
+  align-self: flex-end;
+  font-size: 50%;
+}

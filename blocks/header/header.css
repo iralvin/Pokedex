@@ -1,0 +1,11 @@
+.header {
+  margin: auto;
+  padding: 25px 0;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  overflow: auto;
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+}
