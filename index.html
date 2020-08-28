@@ -11,121 +11,134 @@
   </head>
 
   <body class="page">
-    <div class="pokemon__section">
-      <div class="pokemon__change-view">
-        <button
-          class="pokemon__change-view_button pokemon__change-view_button_grid"
-        >
-          Grid View
-        </button>
-        <button
-          class="pokemon__change-view_button pokemon__change-view_button_list"
-        >
-          List View
-        </button>
+    <header class="header">
+      <ul class="change-view__list">
+        <li class="change-view__list_item">
+          <button class="change-view__button change-view__button_grid">
+            Grid View
+          </button>
+        </li>
+        <li class="change-view__list_item">
+          <button class="change-view__button change-view__button_list">
+            List View
+          </button>
+        </li>
+      </ul>
+
+      <div class="generation-selection">
+        <ul class="generation-selection__buttons-list">
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen1 button_active"
+            >
+              Generation 1
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen2"
+            >
+              Generation 2
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen3"
+            >
+              Generation 3
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen4"
+            >
+              Generation 4
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen5"
+            >
+              Generation 5
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen6"
+            >
+              Generation 6
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen7"
+            >
+              Generation 7
+            </button>
+          </li>
+          <li class="generation-selection__buttons-list_item">
+            <button
+              class="generation-selection__buttons_button pokemon__generation_button_gen8"
+              disabled
+            >
+              Generation 8
+            </button>
+          </li>
+        </ul>
       </div>
 
-      <div class="pokemon__generation-selector">
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen1 button_active"
-        >
-          Generation 1
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen2"
-        >
-          Generation 2
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen3"
-        >
-          Generation 3
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen4"
-        >
-          Generation 4
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen5"
-        >
-          Generation 5
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen6"
-        >
-          Generation 6
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen7"
-        >
-          Generation 7
-        </button>
-        <button
-          class="pokemon__generation_button pokemon__generation_button_gen8"
-          disabled
-        >
-          Generation 8
-        </button>
-      </div>
       <p class="pokemon__note">
         Note: Generation 8 currently not available. The information hasn't been
         updated to API.
       </p>
 
-      <div class="pokemon__dropdown">
-        <button class="pokemon__dropdown_button is_not_visible">
-          Select a pokemon ▼
-        </button>
-        <ul class="pokemon__dropdown_list"></ul>
-      </div>
+    </header>
 
-      <div class="pokemon__cards">
-        <ul class="pokemon__cards-list"></ul>
-      </div>
+    <div class="dropdown is-hidden">
+      <button class="dropdown__button">Select a pokemon ▼</button>
+      <ul class="dropdown__list"></ul>
     </div>
 
-    <div class="pokemon__background-card">
-      <div class="pokemon__popup">
-        <div class="pokemon__popup_container">
-          <h class="pokemon__popup_name"></h>
-          <img src="../asdf.png" alt="" class="pokemon__popup_evolution" />
-          <img class="pokemon__popup_image" src="" />
-          <div class="pokemon__popup_descriptors">
-            <p class="pokemon__popup_height pokemon__popup_descriptor">
-              height
-            </p>
-            <p class="pokemon__popup_weight pokemon__popup_descriptor">
-              weight
-            </p>
-          </div>
-          <div class="pokemon__popup_moves">
-            <p class="pokemon__popup_move_1 pokemon__popup_move_text">hello</p>
-            <p class="pokemon__popup_move_2 pokemon__popup_move_text">world</p>
-          </div>
-          <div class="pokemon__popup_container_flavor-text">
-            <p class="pokemon__popup_flavor-text">flavor text</p>
-          </div>
+    <div class="cards-grid">
+      <ul class="cards-grid__list"></ul>
+    </div>
+
+    <div class="card-popup">
+      <div class="card-popup__container">
+        <h class="card-popup__name"></h>
+        <img src="../asdf.png" alt="" class="card-popup__evolution" />
+        <img class="card-popup__image" src="" />
+        <div class="card-popup__descriptors">
+          <p class="card-popup__descriptors_height card-popup__descriptor">height</p>
+          <p class="card-popup__descriptors_weight card-popup__descriptor">weight</p>
+        </div>
+        <div class="card-popup__moves_container">
+          <p class="card-popup__move_1 card-popup__move_text">hello</p>
+          <p class="card-popup__move_2 card-popup__move_text">world</p>
+        </div>
+        <div class="card-popup__flavor-text_container">
+          <p class="card-popup__flavor-text">flavor text</p>
         </div>
       </div>
+      <!-- <div class="pokemon__popup"></div> -->
     </div>
 
-    <template id="template_option">
-      <div class="pokemon__option">
-        <p class="pokemon__option_name"></p>
+    <template id="template__dropdown_list-item">
+      <div class="dropdown___list-item">
+        <p class="dropdown__list-item_name"></p>
       </div>
     </template>
 
-    <template id="template_card">
-      <div class="pokemon__card">
-        <img class="pokemon__card_image" src="" />
-        <h class="pokemon__card_name"></h>
+    <template id="template__grid_card">
+      <div class="card-grid__card">
+        <img class="card-grid__card_image" src="" />
+        <h class="card-grid__card_name"></h>
       </div>
     </template>
 
     <div class="loading-animation-container">
       <img class="loading-animation" src="./pokeball.png" alt="" />
     </div>
-    <script src="./index.js" type="module"></script>
+    <script src="./scripts/index.js" type="module"></script>
   </body>
 </html>

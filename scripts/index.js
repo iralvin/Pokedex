@@ -4,29 +4,29 @@ import Card from "./Card.js";
 
 const loadingAnimation = document.querySelector(".loading-animation-container");
 
-const optionTemplate = document.querySelector("#template_option");
-const cardTemplate = document.querySelector("#template_card");
+const optionTemplate = document.querySelector("#template__dropdown_list-item");
+const cardTemplate = document.querySelector("#template__grid_card");
 
-const popupContainer = document.querySelector(".pokemon__background-card");
-
-
+const popupContainer = document.querySelector(".card-popup");
 
 
-const popupCard = popupContainer.querySelector(".pokemon__popup");
-const popupEvolutionImage = popupContainer.querySelector(".pokemon__popup_evolution");
-const popupName = popupContainer.querySelector(".pokemon__popup_name");
-const popupImage = popupContainer.querySelector(".pokemon__popup_image");
-const popupHeight = popupContainer.querySelector(".pokemon__popup_height");
-const popupWeight = popupContainer.querySelector(".pokemon__popup_weight");
-const popupMoves1 = popupContainer.querySelector(".pokemon__popup_move_1");
-const popupMoves2 = popupContainer.querySelector(".pokemon__popup_move_2");
 
-const popupFlavorText = popupContainer.querySelector(".pokemon__popup_flavor-text");
+
+const popupCard = popupContainer.querySelector(".card-popup__container");
+const popupEvolutionImage = popupContainer.querySelector(".card-popup__evolution");
+const popupName = popupContainer.querySelector(".card-popup__name");
+const popupImage = popupContainer.querySelector(".card-popup__image");
+const popupHeight = popupContainer.querySelector(".card-popup__descriptors_height");
+const popupWeight = popupContainer.querySelector(".card-popup__descriptors_weight");
+const popupMoves1 = popupContainer.querySelector(".card-popup__move_1");
+const popupMoves2 = popupContainer.querySelector(".card-popup__move_2");
+
+const popupFlavorText = popupContainer.querySelector(".card-popup__flavor-text");
 
 const pokemon = new Pokemon();
 
 const genButtons = Array.from(
-  document.querySelectorAll(".pokemon__generation_button")
+  document.querySelectorAll(".generation-selection__buttons_button")
 );
 
 const setGenButtonEventListener = () => {
@@ -223,7 +223,7 @@ const handlePokemonClick = (pokemonName) => {
   });
 };
 
-const pokemonDropdownList = document.querySelector(".pokemon__dropdown_list");
+const pokemonDropdownList = document.querySelector(".dropdown__list");
 
 const createPokemonList = (generation) => {
   pokemonDropdownList.innerHTML = "";
@@ -243,7 +243,7 @@ const createPokemonList = (generation) => {
   });
 };
 
-const dropdownButton = document.querySelector(".pokemon__dropdown_button");
+const dropdownButton = document.querySelector(".dropdown__button");
 dropdownButton.addEventListener("click", () => {
   pokemonDropdownList.classList.toggle("visible");
 });
@@ -275,8 +275,7 @@ console.log(cacheData);
 
 
 
-
-const pokemonGridList = document.querySelector(".pokemon__cards-list");
+const pokemonGridList = document.querySelector(".cards-grid__list");
 const createPokemonGrid = (generation) => {
   pokemonGridList.innerHTML = "";
   pokemon.getPokemon(generation).then((res) => {
@@ -294,21 +293,45 @@ const createPokemonGrid = (generation) => {
 }
 
 
-const gridButton = document.querySelector(".pokemon__change-view_button_grid");
-const listButton = document.querySelector(".pokemon__change-view_button_list");
+const gridButton = document.querySelector(".change-view__button_grid");
+const listButton = document.querySelector(".change-view__button_list");
 
+
+const pokemonGrid = document.querySelector(".cards-grid");
+const dropdown = document.querySelector(".dropdown")
 gridButton.addEventListener("click", () => {
   // pokemonDropdownList.innerHTML = "";
-  dropdownButton.classList.add("is_not_visible");
-  pokemonGridList.classList.remove("is_not_visible");
+  dropdown.classList.add("is-hidden");
+  pokemonGrid.classList.remove("is-hidden");
 
 });
 
 listButton.addEventListener("click", () => {
   // pokemonCardsList.innerHTML = "";
-  pokemonGridList.classList.add("is_not_visible");
-  dropdownButton.classList.remove("is_not_visible");
+  pokemonGrid.classList.add("is-hidden");
+  dropdown.classList.remove("is-hidden");
 })
 
 
 createPokemonGrid(generationOffsets[0]);
+
+
+
+// console.log("grid margin top " + pokemonGridList.style.marginTop)
+
+// const header = document.querySelector(".header");
+// console.log(header.offsetHeight)
+
+const setContentMargin = () => {
+  const header = document.querySelector(".header");
+  const headerHeight = header.offsetHeight;
+  console.log("header height " + headerHeight)
+
+
+  console.log("grid margin top " + pokemonGrid.style.marginTop)
+  pokemonGrid.style.margin = headerHeight + "px auto 0";
+
+  dropdown.style.margin = headerHeight + "px auto 0";
+}
+window.onload = setContentMargin();
+window.addEventListener("resize", setContentMargin);

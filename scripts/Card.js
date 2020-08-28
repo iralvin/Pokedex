@@ -37,11 +37,11 @@ export default class Card {
 
   generatePokemonCard() {
     this._newCard = this._template.content
-      .querySelector(".pokemon__card")
+      .querySelector(".card-grid__card")
       .cloneNode(true);
 
-    this._pokemonImage = this._newCard.querySelector(".pokemon__card_image");
-    this._pokemonName = this._newCard.querySelector(".pokemon__card_name");
+    this._pokemonImage = this._newCard.querySelector(".card-grid__card_image");
+    this._pokemonName = this._newCard.querySelector(".card-grid__card_name");
     this.appendCard();
 
     this.getPokemonData();

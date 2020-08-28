@@ -24,16 +24,16 @@ export default class Option {
       console.log("clicked on " + this._info.name);
       this._dropdownListButton.innerHTML = `#${this._index + 1}&nbsp;&nbsp;${
         this._info.name
-      }`;
+      } ▼`;
       this._handlePokemonClick(this._info.name);
     });
   }
 
   generatePokemonOption() {
     this._newOption = this._template.content
-      .querySelector(".pokemon__option")
+      .querySelector(".dropdown___list-item")
       .cloneNode(true);
-    this._pokemonName = this._newOption.querySelector(".pokemon__option_name");
+    this._pokemonName = this._newOption.querySelector(".dropdown__list-item_name");
     this._pokemonName.innerHTML = `#${this._index + 1}&nbsp;&nbsp;${
       this._info.name
     }`;
