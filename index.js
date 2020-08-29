@@ -1,6 +1,6 @@
-import Option from "./Option.js";
-import Pokemon from "./Pokemon.js";
-import Card from "./Card.js";
+import Option from "./scripts/Option.js";
+import Pokemon from "./scripts/Pokemon.js";
+import Card from "./scripts/Card.js";
 
 const loadingAnimation = document.querySelector(".loading-animation-container");
 
